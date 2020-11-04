@@ -94,5 +94,7 @@ while True:
              if(f.mode=="wt"):
                  f.write(encrypted)
                  f.close()
+         sg.popup("You save file ", save_file_name)
+         window['-SAVE_IN-'].update("")
 
 window.close()
