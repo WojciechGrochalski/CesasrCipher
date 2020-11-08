@@ -1,6 +1,24 @@
-letterPL = [260, 262, 280, 321, 323, 211, 246, 377, 379, 261, 263, 281, 322, 324, 243, 347, 378, 380]
+import hashlib
+from cryptography.fernet import Fernet
+
+letterPL = [260, 262, 280, 321, 323, 211, 246, 377, 379, 261, 263, 281, 322, 324, 243, 347, 378, 380,
+            164,143,168,157,227,224,151,141,189,165,134,169,136,228,162,152,171,190]
+
+def EncryptFile(choosenAlgorithm, text, pattern):
+    if(choosenAlgorithm=='Cesar'):
+        return encrypt(text,pattern)
 
 
+
+def EncryptSHA(text,key):
+    f = Fernet(key)
+    token = f.encrypt(text)
+    return token
+
+def DecryptSHA(text,key):
+
+    f = Fernet(key)
+    return f.decrypt(text)
 def encrypt(text, s):
     result = ""
     # transverse the plain text
