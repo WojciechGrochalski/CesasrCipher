@@ -4,7 +4,7 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 import PySimpleGUI as sg
-#import textract
+# import textract
 
 import CipherC as Cipher
 
@@ -20,7 +20,9 @@ encrypted = ""
 decrypted = ""
 tex = ""
 options = ""
-t=""
+t = ""
+
+
 def CheckRadioButtton():
     if (values["-CE-"] == True):
         return "Cesar"
@@ -28,6 +30,7 @@ def CheckRadioButtton():
         return "Fernet"
     if (values["-OT-"] == True):
         return "OneTime"
+
 
 file_browse = [
     [
@@ -89,12 +92,12 @@ while True:
         break
     if (event == "-FILE-"):
         file = values["-FILE-"]
-        f = open(file, "rt",encoding='utf-8')
+        f = open(file, "rt", encoding='utf-8')
         if (f.mode == "rt"):
             t = f.read()
             f.close()
-    if(values['-CE-'] or values['-FE-'] or values['-OT-']):
-        options=CheckRadioButtton()
+    if (values['-CE-'] or values['-FE-'] or values['-OT-']):
+        options = CheckRadioButtton()
         encrypted = Cipher.EncryptFile(options, t, pattern, key)
         decrypted = Cipher.DecryptFile(options, encrypted, pattern, key)
     if (values["-EN-"] or values["-DE-"]):
@@ -109,7 +112,7 @@ while True:
             window.FindElement('-SAVE_Text-').update(visible=True)
             window.FindElement('-SAVE_IN-').update(visible=True)
             window.FindElement('-SAVE_OK-').update(visible=True)
-    if (values['-SAVE-']==False):
+    if (values['-SAVE-'] == False):
         window.FindElement('-SAVE_Text-').update(visible=False)
         window.FindElement('-SAVE_IN-').update(visible=False)
         window.FindElement('-SAVE_OK-').update(visible=False)
@@ -132,5 +135,3 @@ while True:
         window.FindElement('-SAVE_OK-').update(visible=False)
 
 window.close()
-
-

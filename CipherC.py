@@ -36,7 +36,7 @@ def EncryptFE(text, key):
 def DecryptFE(text, key):
     f = Fernet(key)
     text=f.decrypt(text)
-    text=text.decode()
+    text=str(text,'utf-8')
     return text
 
 def EncryptONETIME(text, key):
